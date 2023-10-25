@@ -23,6 +23,13 @@ app.listen(PORT, () => {
 
 
 // MIDDLEWARE
+app.use(express.static('public'))
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
+
+
+// 404 page THIS HAS TO BE LAST!!! NO CODE AFTER THIS!!!
+app.get('*', (req, res) => {
+  res.send('404')
+})
